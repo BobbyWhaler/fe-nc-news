@@ -1,13 +1,19 @@
 import ArticleContainer from './article-container'
+import SelectedArticleContainer from './selected-article-container'
 import { useState, useEffect } from "react";
 
-function ArticlesFeed() {
+function ArticlesFeed( {currentArticle, setCurrentArticle, setCurrentArticleComments}) {
 
     const [articles, setArticles] = useState([])
-    const [currentArticle, setCurrentArticle] = useState(null)
 
     const handleArticleClick = (article) => {
         setCurrentArticle(article)
+        fetch(`https://bobbys-nc-news.onrender.com/api/articles/${article.article_id}/comments`)
+        .then((response) => response.json())
+        .then((data) =>{
+            setCurrentArticleComments(data.comments)
+            
+        })
       }
     const handleBackClick = () => {
         setCurrentArticle(null)
@@ -24,9 +30,7 @@ function ArticlesFeed() {
     if (currentArticle !== null) {
         return (
         <div className="article-feed">
-            <div>
-                <ArticleContainer article={currentArticle}/>
-            </div>
+            <SelectedArticleContainer article={currentArticle}/>
             <button onClick={(event) => handleBackClick()}>
                 Back to Articles
             </button>
@@ -37,9 +41,7 @@ function ArticlesFeed() {
         {articles.map((article) => {
         return (
         <div>
-        <div>
-        <ArticleContainer article={article}/>
-        </div>
+        <ArticleContainer article={article} setCurrentArticleComments={setCurrentArticleComments}/>
         <button onClick={(event) => handleArticleClick(article)}>Select Artical</button>
         </div>
         )
