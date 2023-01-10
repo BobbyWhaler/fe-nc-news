@@ -1,7 +1,7 @@
 import ArticleContainer from './article-container'
 import { useState, useEffect } from "react";
 
-function ArticlesFeed() {
+function ArticlesFeed( {setCurrentArticleComments}) {
 
     const [articles, setArticles] = useState([])
     const [currentArticle, setCurrentArticle] = useState(null)
@@ -25,7 +25,7 @@ function ArticlesFeed() {
         return (
         <div className="article-feed">
             <div>
-                <ArticleContainer article={currentArticle}/>
+                <ArticleContainer article={currentArticle} setCurrentArticleComments={setCurrentArticleComments}/>
             </div>
             <button onClick={(event) => handleBackClick()}>
                 Back to Articles
@@ -38,7 +38,7 @@ function ArticlesFeed() {
         return (
         <div>
         <div>
-        <ArticleContainer article={article}/>
+        <ArticleContainer article={article} setCurrentArticleComments={setCurrentArticleComments}/>
         </div>
         <button onClick={(event) => handleArticleClick(article)}>Select Artical</button>
         </div>

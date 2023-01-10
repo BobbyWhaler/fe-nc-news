@@ -1,16 +1,20 @@
-// import { useState } from "react";
+import { useState } from "react";
 import Header from './app-header'
 import ArticlesFeed from './article-feed'
-// import CommentContainer from './comment-container'
+import CommentsContainer from './comments-container'
 // import NewCommentContainer from './new-comment-container'
 
 function AppBody() {
+
+const [currentArticleComments, setCurrentArticleComments] = useState([])
+
 return (
-<div>
+<div class="app-body">
     <Header/>
-    <ArticlesFeed />
-    {/* <CommentsContainer/>
-    <NewCommentContainer/> */}
+    <ArticlesFeed setCurrentArticleComments={setCurrentArticleComments}/>
+    <CommentsContainer
+    currentArticleComments={currentArticleComments}
+    setCurrentArticleComments={setCurrentArticleComments}/>
 </div>
 )
 }
