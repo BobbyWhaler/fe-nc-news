@@ -8,7 +8,7 @@ function AppBody() {
 return (
 <div>
     <Header/>
-    <ArticlesFeed/>
+    <ArticlesFeed />
     {/* <CommentsContainer/>
     <NewCommentContainer/> */}
 </div>

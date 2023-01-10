@@ -3,8 +3,8 @@ import AppBody from './components/app-body'
 
 function App() {
   return (
-    <main>
-      <AppBody />
+    <main >
+      <AppBody  />
     </main>
   );
 }
