@@ -1,4 +1,4 @@
-function CommentContainer({comment}) {
+function CommentContainer({comment,}) {
 
     function formatDate() {
         
@@ -7,6 +7,7 @@ function CommentContainer({comment}) {
         let day = comment.created_at.slice(8, 10)
         return day + "-" + month + "-" + year
     }
+
 
     return (
     <div>
