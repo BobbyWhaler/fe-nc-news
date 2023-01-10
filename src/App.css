@@ -1,0 +1,19 @@
+main {
+  display: grid;
+  grid-template-columns: 600px auto auto;
+  grid-template-rows: 150px 100px auto 300px;
+}
+.header {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+  border-color: black;
+  padding: 2rem;
+  margin: 1rem;
+}
+.article-feed {
+  grid-column: 2 / 3;
+  grid-row: 2 / 5;
+  border-color: black;
+  padding: 2rem;
+  margin: 1rem;
+}

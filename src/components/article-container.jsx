@@ -4,8 +4,9 @@ function ArticleContainer({ article }) {
 
     return (
     <box>
-    <h1>{article.title} by {article.author}</h1>
+    <h2>{article.title} by {article.author}</h2>
     <p>{article.body}</p>
+    <div>votes /\ \/</div>
     <button>Comments</button>
     </box>
     )
