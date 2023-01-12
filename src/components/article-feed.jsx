@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 function ArticlesFeed( {currentArticle, setCurrentArticle, setCurrentArticleComments}) {
 
     const [articles, setArticles] = useState([])
+    const [articleVotes, setArticleVotes] = useState(0)
 
     const handleArticleClick = (article) => {
         setCurrentArticle(article)
@@ -30,7 +31,10 @@ function ArticlesFeed( {currentArticle, setCurrentArticle, setCurrentArticleComm
     if (currentArticle !== null) {
         return (
         <div className="article-feed">
-            <SelectedArticleContainer article={currentArticle}/>
+            <SelectedArticleContainer
+            article={currentArticle}
+            articleVotes={articleVotes}
+            setArticleVotes={setArticleVotes}/>
             <button onClick={(event) => handleBackClick()}>
                 Back to Articles
             </button>
@@ -41,7 +45,11 @@ function ArticlesFeed( {currentArticle, setCurrentArticle, setCurrentArticleComm
         {articles.map((article) => {
         return (
         <div>
-        <ArticleContainer article={article} setCurrentArticleComments={setCurrentArticleComments}/>
+        <ArticleContainer
+        article={article}
+        setCurrentArticleComments={setCurrentArticleComments}
+        articleVotes={articleVotes}
+        setArticleVotes={setArticleVotes}/>
         <button onClick={(event) => handleArticleClick(article)}>Select Artical</button>
         </div>
         )

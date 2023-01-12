@@ -10,7 +10,7 @@ function CommentContainer({comment,}) {
 
 
     return (
-    <div>
+    <div class="comment-container">
     <h3>{comment.author}</h3>
     <p>{comment.body}</p>
     <p>Posted on: {formatDate(comment.created_at)}</p>
