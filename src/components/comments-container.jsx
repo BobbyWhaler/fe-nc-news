@@ -1,13 +1,17 @@
 import CommentContainer from "./comment-container";
-// import { useEffect } from "react";
+import NewCommentContainer from "./new-comment-container"
+import { useState } from "react";
+
 
 function CommentsContainer({ currentArticle, currentArticleComments, setCurrentArticleComments }) {
+console.log(currentArticle)
+  const [newCommentBody, setNewCommentBody] = useState("")
+  const [newCommentContainerStatus, setNewCommentContainerStatus] = useState("closed")
 
     const handleBackClick = () => {
         setCurrentArticleComments([])
     }
     const handleOpenClick = () => {
-        console.log(currentArticle)
         fetch(`https://bobbys-nc-news.onrender.com/api/articles/${currentArticle.article_id}/comments`)
         .then((response) => response.json())
         .then((data) =>{
@@ -15,8 +19,14 @@ function CommentsContainer({ currentArticle, currentArticleComments, setCurrentA
             setCurrentArticleComments(data.comments)
         })
     }
+    const handleNewCommentClick = () => {
+        setNewCommentContainerStatus("open")
+    }
+    const handlBackToCommentsClick = () => {
+      setNewCommentContainerStatus("closed")
+  }
 
-    if (currentArticle !== null) {
+    if (currentArticle !== null && newCommentContainerStatus === "closed") {
         return (
     <div class="comments-container">
       <h3>Comments</h3>
@@ -31,11 +41,22 @@ function CommentsContainer({ currentArticle, currentArticleComments, setCurrentA
         );
         })}
       </ul>
-      <button>New Comment</button>
-      
+      <button onClick={(event) => handleNewCommentClick()}>New Comment</button>
     </div>
   );
 }
+  if (newCommentContainerStatus === "open") {
+    return (
+      <div>
+      <NewCommentContainer
+      newCommentBody={newCommentBody}
+      setNewCommentBody={setNewCommentBody}
+      currentArticle={currentArticle}
+      />
+      <button onClick={(event) => handlBackToCommentsClick()}>Back to Comments</button>
+      </div>
+    )
+  }
 }
 
 export default CommentsContainer;
