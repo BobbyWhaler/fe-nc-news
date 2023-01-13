@@ -4,7 +4,6 @@ import { useState } from "react";
 
 
 function CommentsContainer({ currentArticle, currentArticleComments, setCurrentArticleComments }) {
-console.log(currentArticle)
   const [newCommentBody, setNewCommentBody] = useState("")
   const [newCommentContainerStatus, setNewCommentContainerStatus] = useState("closed")
 
@@ -30,6 +29,7 @@ console.log(currentArticle)
         return (
     <div class="comments-container">
       <h3>Comments</h3>
+      <button onClick={(event) => handleNewCommentClick()}>New Comment</button>
       <button onClick={(event) => handleBackClick()}>Close Comments</button>
       <button onClick={(event) => handleOpenClick()}>View Comments</button>
       <ul>
@@ -41,7 +41,6 @@ console.log(currentArticle)
         );
         })}
       </ul>
-      <button onClick={(event) => handleNewCommentClick()}>New Comment</button>
     </div>
   );
 }

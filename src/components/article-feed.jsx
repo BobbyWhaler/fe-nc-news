@@ -2,9 +2,14 @@ import ArticleContainer from './article-container'
 import SelectedArticleContainer from './selected-article-container'
 import { useState, useEffect } from "react";
 
-function ArticlesFeed( {currentArticle, setCurrentArticle, setCurrentArticleComments}) {
+function ArticlesFeed(
+    {currentArticle,
+    setCurrentArticle,
+    setCurrentArticleComments,
+    articles,
+    setArticles} ) {
 
-    const [articles, setArticles] = useState([])
+    
     const [articleVotes, setArticleVotes] = useState(0)
 
     const handleArticleClick = (article) => {
@@ -26,7 +31,7 @@ function ArticlesFeed( {currentArticle, setCurrentArticle, setCurrentArticleComm
         .then((data) =>{
             setArticles(data.articles)
         })
-      },[])
+      },[setArticles])
     
     if (currentArticle !== null) {
         return (

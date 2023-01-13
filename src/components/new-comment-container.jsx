@@ -11,9 +11,14 @@ const [submit, setSubmit] = useState(null)
 const handleSubmit = (event) => {
     event.preventDefault()
     setErr(null)
+    if (newCommentBody.length === 0) {
+        setErr("comments must be more than 0 characters")
+    }
+    if (newCommentBody.length > 0) {
     postNewComment(currentArticle, currentUser, newCommentBody, setErr, setNewCommentBody)
     setSubmit("done")
     setNewCommentBody("")
+    }
 };
 
     if (err) { return <p>{err}</p> }
