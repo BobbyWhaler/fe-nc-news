@@ -1,5 +1,5 @@
 function Header() {
-    return <h1 className="header">Northcoders News</h1>
+    return <img className="header" src="Northcoders_LTD_Logo_full.png" alt="NC LOGO"></img>
 }
 
 export default Header;

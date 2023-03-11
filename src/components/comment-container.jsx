@@ -26,7 +26,7 @@ function CommentContainer({ comment }) {
             . {formatDate(comment.created_at)}
           </span>
         </h3>
-        <p>{comment.body}</p>
+        <p class="comment-body">{comment.body}</p>
       </div>
       <div class="comment-container-votes">
         <div class="comment-votes-button-container">
